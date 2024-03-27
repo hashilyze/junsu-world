@@ -39,11 +39,7 @@ st.text_area("Description")
 st.file_uploader("Upload a photo")
 st.color_picker("Choose your favorite color")
 
-import sys
-import subprocess
-def pip_install(package):
-    subprocess.check_call(["sudo", sys.executable, "-m", "pip", "install", package])
-pip_install("numpy")
+st.markdown("## Visualization")
 
 import streamlit as st
 import pandas as pd
