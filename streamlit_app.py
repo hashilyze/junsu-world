@@ -18,6 +18,7 @@ st.latex(r'''a+a^1+a r^2+a r ^3''')
 st.markdown("## random image")
 st.image("https://picsum.photos/200")
 
+st.markdown("## 기본적인 데이터 형식 입력")
 st.checkbox("yes")
 st.button("click")
 gender = st.radio("Pick your gender", ["Male", "Female"])
@@ -29,45 +30,23 @@ st.slider("Pick a number", 0.50)
 st.write("성별:", gender)
 st.write("행성:", planet)
 
+st.markdown("## 다양한 데이터 형식 입력")
+st.number_input("Pick a number", 0.10)
+st.text_input("Email address")
+st.date_input("Travelling date")
+st.time_input("School time")
+st.text_area("Description")
+st.file_uploader("Upload a photo")
+st.color_picker("Choose your favorite color")
 
-# with st.expander('About this app'):
-#   st.markdown('**What can this app do?**')
-#   st.info('This app shows the use of Pandas for data wrangling, Altair for chart creation and editable dataframe for data interaction.')
-#   st.markdown('**How to use the app?**')
-#   st.warning('To engage with the app, 1. Select genres of your interest in the drop-down selection box and then 2. Select the year duration from the slider widget. As a result, this should generate an updated editable DataFrame and line plot.')
-  
-# st.subheader('Which Movie Genre performs ($) best at the box office?')
+import sys
+import subprocess
+def pip_install(package):
+    subprocess.check_call(["sudo", sys.executable, "-m", "pip", "install", package])
+pip_install("numpy")
 
-# # Load data
-# df = pd.read_csv('data/movies_genres_summary.csv')
-# df.year = df.year.astype('int')
-
-# # Input widgets
-# ## Genres selection
-# genres_list = df.genre.unique()
-# genres_selection = st.multiselect('Select genres', genres_list, ['Action', 'Adventure', 'Biography', 'Comedy', 'Drama', 'Horror'])
-
-# ## Year selection
-# year_list = df.year.unique()
-# year_selection = st.slider('Select year duration', 1986, 2006, (2000, 2016))
-# year_selection_list = list(np.arange(year_selection[0], year_selection[1]+1))
-
-# df_selection = df[df.genre.isin(genres_selection) & df['year'].isin(year_selection_list)]
-# reshaped_df = df_selection.pivot_table(index='year', columns='genre', values='gross', aggfunc='sum', fill_value=0)
-# reshaped_df = reshaped_df.sort_values(by='year', ascending=False)
-
-
-# # Display DataFrame
-
-# df_editor = st.data_editor(reshaped_df, height=212, use_container_width=True,
-#                             column_config={"year": st.column_config.TextColumn("Year")},
-#                             num_rows="dynamic")
-# df_chart = pd.melt(df_editor.reset_index(), id_vars='year', var_name='genre', value_name='gross')
-
-# # Display chart
-# chart = alt.Chart(df_chart).mark_line().encode(
-#             x=alt.X('year:N', title='Year'),
-#             y=alt.Y('gross:Q', title='Gross earnings ($)'),
-#             color='genre:N'
-#             ).properties(height=320)
-# st.altair_chart(chart, use_container_width=True)
+import streamlit as st
+import pandas as pd
+import numpy as np
+df = pd.DataFrame(np.random.randn(10, 2), columns=["x", "y"])
+st.line_chart(df)
