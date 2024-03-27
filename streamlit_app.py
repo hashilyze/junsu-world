@@ -7,6 +7,29 @@ import altair as alt
 st.set_page_config(page_title='Interactive Data Explorer', page_icon='📊')
 st.title('📊 Interactive Data Explorer')
 
+st.title("this is the app title")
+st.header("this is the header")
+st.markdown("this is the markdown")
+st.subheader("this is the subheader")
+st.caption("this is the caption")
+st.code("x=2021")
+st.latex(r'''a+a^1+a r^2+a r ^3''')
+
+st.markdown("## random image")
+st.image("https://picsum.photos/200")
+
+st.checkbox("yes")
+st.button("click")
+gender = st.radio("Pick your gender", ["Male", "Female"])
+st.selectbox("Pick your gender", ["Male", "Female"])
+planet = st.multiselect("choose a planet", ["Jupiter", "Mars", "Neptune"])
+st.select_slider("Pick a mark", ["Bad", "Good", "Excellent"])
+st.slider("Pick a number", 0.50)
+
+st.write("성별:", gender)
+st.write("행성:", planet)
+
+
 # with st.expander('About this app'):
 #   st.markdown('**What can this app do?**')
 #   st.info('This app shows the use of Pandas for data wrangling, Altair for chart creation and editable dataframe for data interaction.')
